@@ -3,8 +3,22 @@ import styled from "styled-components";
 const primaryColor = "#15BDAC";
 const borderColor = "#0FA192";
 
-export const HeaderContainer = styled.div`
+export const Container = styled.div`
+	width: 450px;
+	margin: 120px auto;
+	background: #ffffff;
+	border: 1px solid #dfdfdf;
+	position: relative;
 	padding: 10px;
+	border-radius: 3px;
+`;
+
+export const Flex = styled.div`
+	display: flex;
+	flex-direction: ${(props) => props.direction || "row"};
+`;
+
+export const HeaderContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,9 +30,9 @@ export const HeaderContainer = styled.div`
 
 export const PlayerTitle = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	padding: 10px 5px;
+	padding: 10px;
 	border-bottom: 2px solid transparent;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16);
 	margin-right: 10px;
@@ -45,20 +59,13 @@ export const PlayerState = styled.div`
 	margin: 10px 0;
 `;
 
-export const Container = styled.div`
-	width: 450px;
-	margin: 120px auto;
-	background: #ffffff;
-	border: 1px solid #dfdfdf;
-	position: relative;
-`;
-
 export const GameCanvas = styled.div`
 	background: ${primaryColor};
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	padding: 80px 0;
+	padding: 12px 0;
+	position: relative;
 	.board {
 		flex-wrap: wrap;
 		position: relative;
@@ -76,18 +83,13 @@ export const GameCanvas = styled.div`
 	}
 `;
 
-export const Flex = styled.div`
-	display: flex;
-	flex-direction: ${(props) => props.direction || "row"};
-`;
-
 export const DashSvg = styled.svg`
 	width: 216px;
 	opacity: 1;
 	height: 100%;
 	position: absolute;
-	top: 177px;
 	z-index: 1;
+	top: 0;
 	path {
 		stroke: ${borderColor};
 		stroke-width: 6px;
@@ -121,14 +123,24 @@ export const LoaderDiv = styled.div`
 	right: 0;
 `;
 
-export const ResetBtn = styled.button`
-	border: 1px solid #efefef;
-	background: white;
-	color: ${primaryColor};
-	padding: 10px 20px;
-	position: absolute;
-	bottom: 20px;
+export const Popover = styled.div`
 	cursor: pointer;
 	border-radius: 3px;
 	z-index: 1;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: rgba(21, 189, 172, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9;
+	.message {
+		font-size: 3em;
+		color: #fffabd;
+		padding: 0 15px;
+		border-radius: 5px;
+	}
 `;

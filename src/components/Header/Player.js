@@ -12,8 +12,11 @@ const Player = (props) => {
 	}
 	return (
 		<PlayerTitle className={classes}>
-			<span className="player-name">
-				{player.name} - {player.wins}
+			<span className="player-name" data-test="playerName">
+				{player.name}
+			</span>
+			<span className="player-name" data-test="playerWins">
+				{player.wins}
 			</span>
 		</PlayerTitle>
 	);

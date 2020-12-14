@@ -6,7 +6,6 @@ import { HeaderContainer, Flex, PlayerState } from "../../styled";
 const Header = () => {
 	const game = useSelector((state) => state.game);
 	const { players, player_state, winner, logs, tie } = game;
-
 	return (
 		<HeaderContainer>
 			<Flex className="player-section">

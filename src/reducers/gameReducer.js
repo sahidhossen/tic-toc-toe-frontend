@@ -1,7 +1,8 @@
+import { isMatchTie, checkWin } from "../utils";
+
 const defaultTicks = Array.from(Array(9).fill(0));
 
-const initialState = {
-	player: 1,
+export const initialState = {
 	player_state: "x",
 	players: {
 		x: { name: "X", win: 0 },
@@ -10,7 +11,7 @@ const initialState = {
 	ticks: [...defaultTicks],
 	winner: null,
 	tie: false,
-	logs: ["Start Game"],
+	logs: [],
 	fetch: false,
 };
 
@@ -32,14 +33,22 @@ const GameReducer = (state = initialState, action) => {
 				ticks: [...ticks],
 				winner,
 				tie,
-				log: nextLog,
+				logs: nextLog,
 			};
 		}
 		case "INIT_GAME": {
 			const { payload } = action;
+			const winner = checkWin(payload.ticks, payload.player_state);
+
+			let tie = false;
+			if (!winner) {
+				tie = isMatchTie(payload.ticks);
+			}
 			return {
 				...state,
 				...payload,
+				winner,
+				tie,
 				fetch: true,
 			};
 		}

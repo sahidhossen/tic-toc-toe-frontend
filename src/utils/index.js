@@ -37,4 +37,27 @@ const checkEmptyPlace = (board) => {
 	return board.filter((s) => s === 0);
 };
 
+export const processNextTick = (game, index) => {
+	const { ticks, players, player_state } = game;
+
+	const nextTicks = [...ticks];
+	nextTicks[index] = player_state;
+
+	const winner = checkWin(nextTicks, player_state);
+
+	let tie = false,
+		nextPlayer = player_state,
+		log = "";
+
+	if (winner) {
+		log = "Game Over";
+	} else {
+		tie = isMatchTie(nextTicks);
+		nextPlayer = nextPlayer === "x" ? "o" : "x";
+		log = tie ? "Game Over" : players[nextPlayer].name + " Turn";
+	}
+
+	return { ticks: nextTicks, player_state: nextPlayer, winner, tie, log };
+};
+
 export * from "./API";
