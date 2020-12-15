@@ -7,3 +7,10 @@
 - Type `yarn install` or `npm install` to install npm packages
 - Before run the project make sure you have run `tic-toc-toe-server`
 - Run project with `npm start`
+- Check test case run `npm run test` Or `yarn test`
+
+### Technology
+
+- React
+- Redux
+- Redux-thunk
